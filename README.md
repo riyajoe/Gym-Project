@@ -4,6 +4,9 @@ This is a Multi Gym Booking facaility that enables third party to conduct gym cl
 
 Roles 
 ....................
+
 Client
+
 Trainer
+
 Admin
