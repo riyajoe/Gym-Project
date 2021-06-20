@@ -1,0 +1,38 @@
+{% extends "BaseLayout.html" %}
+{% block content %}
+
+    <body>
+        {% block main%}
+        <p> </p>
+        <table align="center">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>PRICE</th>
+                <th>TRAINER</th>
+            </tr>
+            </thead>
+        <tbody>
+        {% for i in data %}
+        <tr>
+            <td>
+                {{i.pid}}  
+            </td>
+            <td>
+                {{i.name}}
+            </td>
+            <td>
+                {{i.price}}
+            </td>
+            <td>
+                {{i.trainer}}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    
+    </body>
+    {% endblock %}
+{% endblock %}

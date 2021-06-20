@@ -1,0 +1,40 @@
+{% extends "LoginLayout.html" %}
+{% block content %}
+{%include "error_message.html"%}
+    {% if current_user.is_anonymous %}
+<table align="center">
+    <form action="" method="POST" novalidate>
+           
+            {{form.csrf_token()}}
+            <tbody>
+              <tr>
+                <td>EMAIL</td>
+                <td>{{form.email}}</td>
+                
+                
+              </tr>
+              <tr>
+                {% for error in form.email.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+              </tr>
+              <tr>
+                <td>PASSWORD</td>
+                <td>
+                {{form.password}}
+                </td>
+              </tr>
+          <tr>
+            <td></td>
+            <td>{{form.submit}}</td>
+          </tr>
+  </table>
+  <style>
+   p{
+     text-align: center;
+   }
+  </style>
+  <p><a href="/Register">Please Register If New</a></p>
+  </body>
+  {%endif%}
+  {% endblock %}

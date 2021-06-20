@@ -1,0 +1,38 @@
+{% extends "PackageLayout.html" %}
+{% block content %}
+
+    <body>
+        {% block main%}
+        <p> </p>
+        <table align="center">
+            <thead>
+            <tr>
+                <th>PACKAGES</th>
+                <th>TOTAL PRICE</th>
+                <th>ACTION</th>
+            </tr>
+            </thead>
+        <tbody>
+        <form method="post" action="/PackageDetails">
+        {% for key, value in data.items() %}
+        <tr>
+            <td>
+                {{key|e}}  
+            </td>
+             
+            <td>
+                {{value|e}}
+            </td>
+            <td>
+                <button  value={{key}} name= {{key}}>View More Info</button>
+            </td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</form>
+</table>
+    
+    </body>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "WeightGainLayout.html" %}
+{% block content %}
+<br> 
+<ul>
+    <li><a href="/">LOGIN </a></li>
+    <li><a href="/Register">REGISTER</a></li>
+    <li><a class="active" href="/Deals">VIEW DEALS</a></li>
+  
+</ul>
+<p> </p>
+    <body>
+        {% block main%}
+        <p> </p>
+        <table align="center">
+            <thead>
+            <tr>
+                <th>SERVICES INCLUDED </th>
+                <th>PRICE PER SERVICE</th>
+            </tr>
+            </thead>
+        <tbody>
+        {% for i in data %}
+        <tr>
+            <td>
+                {{i.name}}  
+            </td>
+             
+            <td>
+                {{i.price}}
+            </td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    
+    </body>
+    {% endblock %}
+{% endblock %}

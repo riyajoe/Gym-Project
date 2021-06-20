@@ -1,0 +1,55 @@
+{% extends "BaseLayout.html" %}
+{% block content %}
+
+    <body>
+        {% block main%}
+        <p> </p>
+        <table align="center">
+            <thead>
+            <tr>
+                <th>SERIVCE ID</th>
+                <th>NAME</th>
+                <th>START TIME</th>
+                <th>END TIME</th>
+                <th>DAY</th>
+                <th>MONTH</th>
+                <th>AVAILABLE SPOTS</th>
+                <th>ACTION</th>
+            </tr>
+            </thead>
+        <tbody>
+        {% for i in data %}
+        <tr>
+            <td>
+                {{i.ServiceId}}  
+            </td>
+            <td>
+                {{i.ServiceName}}
+            </td>
+            <td>
+                {{i.startTime}}
+            </td>
+            <td>
+                {{i.endTime}}
+            </td>
+            <td>
+                {{i.DayinWords}}
+            </td>
+            <td>
+                {{i.Month}}
+                {{i.Year}}
+            </td>
+            <td>
+               {{i.SpacesAvailable}}
+            </td>
+            <td>
+                <button value={{key}} name= {{key}}>Book Class</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    
+    </body>
+    {% endblock %}
+{% endblock %}

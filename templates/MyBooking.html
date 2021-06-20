@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Client Dashboard</title>
+    <style>
+        .center {
+        text-align: center
+        }
+
+        
+        ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid #e7e7e7;
+        background-color: #f3f3f3;
+        }
+
+    li {
+    float: left;
+    }
+
+    li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+    background-color: #ddd;
+    }
+
+    li a.active {
+    color: white;
+    background-color: #2b5c5f;
+    }
+
+table{
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}  
+
+td, th {  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+tr:hover {background-color: #ddd;}
+
+th,h1,h2 {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #718d97;
+  color: white;
+}
+    </style>
+  </head>
+ 
+  <body>
+    <h1 class='center'>
+        Gym Builder
+    </h1>
+    <h2 class='center'>
+
+      {% if current_user.is_authenticated %}
+      <h3>Welcome, {{ current_user.email }}</h3>
+      {% endif %}
+    </h2>
+    
+    
+      
+   
+    <br> 
+    <ul>
+        <li><a href="/calculateBMI">CALCULATE BMI</a></li>
+        <li><a href="/ClientDashboard">HOME</a></li>
+        <li><a class="active" href="/mybooking">VIEW MY BOOKING</a></li>
+        <li><a href="/membershipdetails">MEMBERSHIP</a></li>
+        <li><a style="float:right" href="/logout">LOGOUT</a></li>
+    </ul>
+    <p></p>
+      <table align="center">
+          <thead>
+          <tr>
+              <th>CLASS ID</th>
+              <th>NAME</th>
+              <th>DATE</th>
+              <th>START TIME</th>
+              <th>END TIME</th>
+              <th>TRAINER DETAILS</th>
+              <th>ACTION</th>
+          </tr>
+          </thead>
+      <tbody>
+      {% for i in data %}
+      <tr>
+          <td>
+              {{i.classid}}  
+          </td>
+          <td>
+              {{i.servicename}}
+          </td>
+          <td>
+              {{i.scheduleddate}}
+          </td>
+          <td>
+              {{i.starttime}}
+          </td>
+          <td>
+            {{i.endtime}}
+        </td>
+        <td>
+          {{i.trainer}}
+      </td>
+   <td>
+          <form method="POST" action="/mybooking?id={{i.classid}}">
+            <input type="submit" value="CANCEL" name="CANCEL">
+            </form>
+        </td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+     {% block content %}{% endblock %}
+    
+
+
+
+  </body>
+</html>

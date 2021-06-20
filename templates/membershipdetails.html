@@ -1,0 +1,34 @@
+{% extends "membershipLayout.html" %}
+{% block content %}
+
+{% if current_user.is_authenticated %}
+  <h3>Welcome, {{ current_user.email }}</h3>
+  {% endif %}
+<table align="center">
+  <br> 
+    <ul>
+        <li><a href="/calculateBMI">CALCULATE BMI</a></li>
+        <li><a href="/ClientDashboard">HOME</a></li>
+        <li><a  href="/mybooking">VIEW MY BOOKING</a></li>
+        <li><a class="active" href="/membershipdetails">MEMBERSHIP</a></li>
+        <li><a style="float:right" href="/logout">LOGOUT</a></li>
+    </ul>
+    <p></p>
+    <form action="" method="POST" novalidate>
+        
+            <tbody>
+              <tr>
+                <td> CURRENT MEMBERSHIP</td>
+                <td>{{data}}</td>
+                
+                
+              </tr>
+              <tr>
+                <td><button>DOWNGRADE</button></td>
+                <td>
+                <button>UPGRADE</button>
+                </td>
+              </tr>
+  </table>
+
+ </body>  {% endblock %}

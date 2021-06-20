@@ -1,0 +1,55 @@
+{% extends "RegisterLayout.html" %}
+{% block content %}
+<br> 
+    <ul>
+        <li><a href="/">LOGIN </a></li>
+        <li><a class="active" href="/Register">REGISTER</a></li>
+        <li><a href="/Deals">VIEW DEALS</a></li>
+      
+    </ul>
+    <p> </p>
+<table align="center">
+    <form action="/Register" method="POST">
+           
+            {{form.csrf_token()}}
+            <tbody>
+              <tr>
+                <td>NAME</td>
+                <td>{{form.name}}</td>
+              </tr>
+              <tr>
+                <td>EMAIL</td>
+                <td>
+                {{form.email}}
+                </td>
+              </tr>
+              <tr>
+                <td>PASSWORD</td>
+                <td>
+                  {{form.password}}
+                </td>
+                </tr>
+                <tr>
+               <td>MEMBERSHIP</td>
+                <td>
+                    {{form.membership}}
+                  </td>
+                </tr>
+              
+              <tr>
+                <td>DURATION</td>
+                <td>{{form.duration}}</td>
+              </tr>
+          <tr>
+            <td></td>
+            <td>{{form.submit}}</td>
+            
+          </tr>
+          <tr>
+            {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+          </tr>
+  </table>
+  </body>
+  {% endblock %}

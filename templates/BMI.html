@@ -1,0 +1,43 @@
+{% extends "BMILayout.html" %}
+{% block content %}
+ {% if current_user.is_authenticated %}
+  <h3>Welcome, {{ current_user.email }}</h3>
+  {% endif %}
+<br> 
+<ul>
+    <li><a class="active" href="/calculateBMI">CALCULATE BMI</a></li>
+    <li><a href="/ClientDashboard">HOME</a></li>
+    <li><a href="/mybooking">VIEW MY BOOKING</a></li>
+    <li><a href="/membershipdetails">MEMBERSHIP</a></li>
+    <li><a style="float:right" href="/logout">LOGOUT</a></li>
+</ul>
+<p></p>
+<table align="center">
+    <form action="" method="POST" novalidate>
+           
+            {{form.csrf_token()}}
+            <tbody>
+              <tr>
+                <td>Enter Height</td>
+                <td>{{form.height}}</td>
+                </tr>
+              <tr>
+                <td>Enter Weight</td>
+                <td>
+                {{form.weight}}
+                </td>
+              </tr>
+              <tr>
+                <td>Enter Age</td>
+                <td>
+                {{form.age}}
+                </td>
+              </tr>
+          <tr>
+            <td></td>
+            <td>{{form.submit}}</td>
+          </tr>
+  </table>
+  </body>
+ 
+  {% endblock %}

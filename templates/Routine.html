@@ -1,0 +1,49 @@
+{% extends "RoutineLayout.html" %}}
+{% block content %}
+
+<body>
+  {% block main %}
+    <table align="center">
+      <form action="/CreateRoutine" method="POST">
+             
+              {{form.csrf_token()}}
+              <tbody>
+                <tr>
+                  <td>CLASS ID</td>
+                  <td>{{form.classid}}</td>
+                </tr>
+                <tr>
+                  <td>DATE</td>
+                  <td>{{form.scheduledDate}}</td>
+                </tr>
+                <tr>
+                  <td>SERVICE ID </td>
+                  <td>
+                  {{form.ServiceId}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>START TIME</td>
+                  <td>
+                    {{form.startTime}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>END TIME</td>
+                  <td>{{form.endTime}}</td>
+                </tr>
+             
+                
+                <tr>
+                    <td>MAXIMUM SPACES</td>
+                    <td>{{form.SpacesAvailable}}</td>
+                </tr>
+            <tr>
+              <td></td>
+              <td>{{form.Create}}</td>
+              
+            </tr>
+    </table>
+    </body>
+    {% endblock %}
+    {% endblock %}
